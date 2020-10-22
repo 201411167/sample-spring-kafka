@@ -1,0 +1,18 @@
+#spring:
+#  kafka:
+#    bootstrap-servers: localhost:9092 # kafka 서버 주소
+#    template:
+#      medium:
+#        topic: medium-topic
+#      company:
+#        topic: company-topic
+#    consumer:
+#      group-id: myGroup # consumer에서 사용하는 group id
+#      enable-auto-commit: true # kafka에서 메시지를 받고 ACK 전송 여부 설정
+#      auto-offset-reset: latest # 메시지를 가져오는 consumer의 offset정보가 존재하지 않는 경우의 처리 방법
+
+kafka:
+  bootstrapAddress: localhost:9092
+message:
+  topic:
+    name: minjun
