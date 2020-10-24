@@ -21,7 +21,8 @@ import java.util.Map;
 @Slf4j
 public class KafkaTopicConfig {
 
-    @Value("${kafka.bootstrapAddress}")
+//    @Value("${kafka.bootstrapAddress}")
+    @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
     @Value("${message.topic.name}")

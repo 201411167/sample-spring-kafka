@@ -1,5 +1,28 @@
-version: "3"
+version: '3'
 services:
   zookeeper:
-
-  kafka-server:
+    container_name: 'zookeeper'
+    image: wurstmeister/zookeeper
+    restart: always
+    ports:
+      - 2181:2181
+  kafka:
+    container_name: 'kafka'
+    image: wurstmeister/kafka
+    restart: always
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  spring-kafka:
+    container_name: 'spring-kafka'
+    image: spring-kafka
+    depends_on:
+      - kafka
+    links:
+      - kafka
+    environment:
+      - spring.kafka.bootstrap-servers=kafka:9092
